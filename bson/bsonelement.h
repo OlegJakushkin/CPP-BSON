@@ -56,6 +56,10 @@ namespace mongo {
     */
     class BSONElement {
     public:
+		const StringData fieldNameStringData() const {
+            return StringData(fieldName(), eoo() ? 0 : fieldNameSize() - 1);
+        }
+
         /** These functions, which start with a capital letter, throw a UserException if the
             element is not of the required type. Example:
 
